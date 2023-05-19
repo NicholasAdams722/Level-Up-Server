@@ -1,0 +1,13 @@
+[
+    {
+        "model": "levelupapi.event",
+        "pk": 1,
+        "fields": {
+            "description": "This event will be held",
+            "date": "2023-06-11",
+            "time": "12:00",
+            "organizer": 1,
+            "game": 2
+        }
+    }
+]

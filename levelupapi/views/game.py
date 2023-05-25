@@ -36,18 +36,18 @@ class GameView(ViewSet):
             Response -- JSON serialized game instance
         """
         gamer = Gamer.objects.get(user=request.auth.user)
-        game_type = GameType.objects.get(pk=request.data["game_type"])
+        game_type = GameType.objects.get(pk=request.data["gameTypeId"])
 
         game = Game.objects.create(
             title=request.data["title"],
             maker=request.data["maker"],
-            number_of_players=request.data["number_of_players"],
-            skill_level=request.data["skill_level"],
+            number_of_players=request.data["numberOfPlayers"],
+            skill_level=request.data["skillLevel"],
             gamer=gamer,
             game_type=game_type
         )
         serializer = GameSerializer(game)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     
     def update(self, request, pk):
         """Handle PUT requests for a game
@@ -59,10 +59,9 @@ class GameView(ViewSet):
         game = Game.objects.get(pk=pk)
         game.title = request.data["title"]
         game.maker = request.data["maker"]
-        game.number_of_players = request.data["number_of_players"]
-        game.skill_level = request.data["skill_level"]
-
-        game_type = GameType.objects.get(pk=request.data["game_type"])
+        game.number_of_players = request.data["numberOfPlayers"]
+        game.skill_level = request.data["skillLevel"]
+        game_type = GameType.objects.get(pk=request.data["gameType"])
         game.game_type = game_type
         game.save()
 

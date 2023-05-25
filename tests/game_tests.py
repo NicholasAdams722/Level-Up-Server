@@ -54,12 +54,12 @@ class GameTests(APITestCase):
 
         # Seed the database with a game
         game = Game()
-        game.game_type = GameType(1)
+        game.game_type_id = 1
         game.skill_level = "5"
         game.title = "Monopoly"
         game.maker = "Milton Bradley"
         game.number_of_players = 4
-        game.gamer = Gamer(1)
+        game.gamer_id = 1
 
         game.save()
 
@@ -83,18 +83,18 @@ class GameTests(APITestCase):
         Ensure we can change an existing game.
         """
         game = Game()
-        game.game_type= GameType(1)
+        game.game_type_id= 1
         game.skill_level = 5
         game.title = "Sorry"
         game.maker = "Milton Bradley"
         game.number_of_players = 4
-        game.gamer = Gamer(1)
+        game.gamer_id = 1
         game.save()
 
         # DEFINE NEW PROPERTIES FOR GAME
         data = {
             "gameType": 1,
-            "skillLevel": 2, #! Why doesnt this need to change to a string?
+            "skillLevel": 2, #! Does this need to change to a string?
             "title": "Sorry",
             "maker": "Hasbro",
             "numberOfPlayers": 4
@@ -119,12 +119,12 @@ class GameTests(APITestCase):
         Ensure we can delete an existing game.
         """
         game = Game()
-        game.game_type = GameType(1)
+        game.game_type_id = 1
         game.skill_level = 5
         game.title = "Sorry"
         game.maker = "Milton Bradley"
         game.number_of_players = 4
-        game.gamer = Gamer(1)
+        game.gamer_id = 1
         game.save()
 
         # DELETE the game you just created

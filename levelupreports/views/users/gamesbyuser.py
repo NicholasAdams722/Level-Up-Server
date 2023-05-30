@@ -65,7 +65,7 @@ class UserGameList(View):
 
             for row in dataset:
                 # TODO: Create a dictionary called game that includes 
-                # the name, description, number_of_players, maker,
+                # the name, number_of_players, maker,
                 # game_type_id, and skill_level from the row dictionary
                 game = {
                     "id": row["id"],
